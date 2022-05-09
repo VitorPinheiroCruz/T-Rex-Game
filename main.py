@@ -1,9 +1,6 @@
 import pygame
 import sys
 from random import randint
-import time
-
-import setuptools
 
 pygame.init()
 width = 800
@@ -105,12 +102,16 @@ class Cactus(pygame.sprite.Sprite):
 class Dino(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.dino_duck_1 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoDuck1.png').convert_alpha(), (59, 30))
-        self.dino_duck_2 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoDuck2.png').convert_alpha(), (59, 30))
-        self.dino_jump = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoJump.png').convert_alpha(), (43.5, 47))
-        self.dino_run_1 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoRun1.png').convert_alpha(), (43.5, 47))
-        self.dino_run_2 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoRun2.png').convert_alpha(), (43.5, 47))
-
+        self.dino_duck_1 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoDuck1.png').convert_alpha(),
+                                                  (59, 30))
+        self.dino_duck_2 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoDuck2.png').convert_alpha(),
+                                                  (59, 30))
+        self.dino_jump = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoJump.png').convert_alpha(),
+                                                (43.5, 47))
+        self.dino_run_1 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoRun1.png').convert_alpha(),
+                                                 (43.5, 47))
+        self.dino_run_2 = pygame.transform.scale(pygame.image.load('Assets/Dino/DinoRun2.png').convert_alpha(),
+                                                 (43.5, 47))
         self.dino_lista = [self.dino_run_1, self.dino_run_2]
         self.dino_lista_duck = [self.dino_duck_1, self.dino_duck_2]
         self.dino_index = 0
@@ -127,7 +128,6 @@ class Dino(pygame.sprite.Sprite):
             self.image = self.dino_lista_duck[int(self.dino_index)]
         elif self.rect.bottom == 285:
             self.image = self.dino_lista[int(self.dino_index)]
-
 
     def pular(self):
         keys = pygame.key.get_pressed()
@@ -210,10 +210,12 @@ game_active = False
 
 collisions = Collisions_cactus_birds()
 
+
 def apresentation_screen():
     keys = pygame.key.get_pressed()
     if keys[pygame.K_SPACE]:
         return True
+
 
 # Set Timer
 cactus_time = pygame.USEREVENT + 1
@@ -234,7 +236,7 @@ while True:
 
         if game_active:
             if event.type == cactus_time:
-                cactus.add(Cactus(randint(0,5)))
+                cactus.add(Cactus(randint(0, 5)))
 
             if event.type == bird_time:
                 bird.add(Bird())
